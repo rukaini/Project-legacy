@@ -1,0 +1,71 @@
+:root {
+  --app-font-family: "Inter", sans-serif;
+  --app-shell-max-width: 1880px;
+  --app-page-top-space: clamp(22px, 2.2vw, 36px);
+  --app-page-gutter: clamp(16px, 2.4vw, 44px);
+  --app-page-bottom-space: clamp(44px, 4vw, 68px);
+  --app-header-height: 58px;
+  --app-header-gutter: clamp(16px, 2.25vw, 42px);
+  --app-header-nav-padding: clamp(11px, .95vw, 16px);
+  --app-logo-height: 48px;
+  --app-logo-max-width: 52px;
+  --app-navigator-width: 360px;
+  --app-navigator-width-intermediate: 320px;
+  --app-navigator-width-compact: 44px;
+  --app-background: #f8fafc;
+  --app-surface: #fff;
+  --app-text: #0f172a;
+  --app-text-secondary: #475569;
+  --app-text-muted: #64748b;
+  --app-text-subtle: #94a3b8;
+  --app-border: #e2e8f0;
+  --app-border-strong: #cbd5e1;
+  --app-divider: #f1f5f9;
+  --app-primary: #2563eb;
+  --app-primary-dark: #1d4ed8;
+  --app-primary-soft: #eff6ff;
+  --app-primary-border: #bfdbfe;
+  --app-success: #059669;
+  --app-success-soft: #ecfdf5;
+  --app-warning: #d97706;
+  --app-warning-soft: #fffbeb;
+  --app-danger: #dc2626;
+  --app-danger-soft: #fff1f2;
+  --app-focus-ring: rgba(37, 99, 235, .3);
+  --app-input-focus-ring: rgba(37, 99, 235, 0.09);
+  --app-disabled-opacity: .45;
+  --app-radius-control: 10px;
+  --app-radius-compact: 9px;
+  --app-radius-toast: 11px;
+  --app-radius-card: 16px;
+  --app-radius-panel: 18px;
+  --app-radius-pill: 999px;
+  --app-shadow-header: 0 1px 10px rgba(15, 23, 42, 0.04);
+  --app-shadow-card: 0 6px 20px rgba(15, 23, 42, 0.05);
+  --app-shadow-toast: 0 12px 30px rgba(15, 23, 42, 0.16);
+  --app-motion-duration: .18s;
+  --app-motion-easing: ease;
+  --app-motion-reduced: .01ms;
+  --app-touch-target: 44px;
+  --app-focus-width: 3px;
+  --app-focus-offset: 2px;
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    --app-page-top-space: 20px;
+    --app-page-gutter: 16px;
+    --app-page-bottom-space: 44px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  :root {
+    --app-page-gutter: 12px;
+    --app-logo-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --app-motion-duration: .01ms; }
+}

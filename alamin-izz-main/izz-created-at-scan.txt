@@ -1,0 +1,35 @@
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Auth\MultiTableUserProvider.php:105: 'created_at' => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\ApplicationController.php:145: ->latest('applied_at')
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\ApplicationController.php:165: ->latest('applied_at')
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\GuruBaruApplicationController.php:57: ->latest()
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\NotificationController.php:16: ->latest('created_at')
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\TrainingController.php:63: $trainings = $query->latest()->get();
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\TrainingController.php:390: ->orderBy('created_at')
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\TrainingHistoryController.php:813: ->orderBy('created_at')
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:40: ->latest('applied_at')
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:51: ->latest()
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:110: ? Attendance::where('teacher_id', $teacherRecord->teacherID)->whereIn('session_id', $sessionIds)->max('created_at')
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\Dashboard\OutsiderDashboardController.php:23: ->latest('applied_at')
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\Hr\HrApplicationController.php:28: ->latest('applied_at');
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\Hr\HrApplicationController.php:35: ->latest('applied_at');
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\Hr\HrApplicationController.php:134: 'created_at' => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\Hr\HrDashboardController.php:57: ->latest('applied_at')
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Http\Controllers\Hr\HrDashboardController.php:72: ->latest('applied_at')
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Listeners\SendApplicationApprovedNotification.php:24: 'created_at' => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Listeners\SendApplicationRejectedNotification.php:24: 'created_at' => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Listeners\SendApplicationSubmittedNotification.php:29: 'created_at' => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Listeners\SendGuruBaruApplicationSubmittedNotification.php:29: 'created_at' => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Listeners\SendOutsiderApplicationSubmittedNotification.php:29: 'created_at' => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Listeners\SendTeacherAssignedNotification.php:24: 'created_at' => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Listeners\SendTrainingCancelledNotification.php:26: 'created_at' => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Listeners\SendTrainingCreatedNotification.php:27: 'created_at' => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Listeners\SendTrainingUpdatedNotification.php:26: 'created_at' => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Models\AuditLog.php:18: 'created_at',
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Models\AuditLog.php:25: 'created_at' => 'datetime',
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Models\Notification.php:17: 'user_id', 'message', 'type', 'url', 'is_read', 'created_at',
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Models\Notification.php:25: 'created_at' => 'datetime',
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Models\Teacher.php:130: ->latest('assignDate');
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Services\ApplicationService.php:201: 'created_at'  => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Services\AttendanceService.php:190: 'created_at'  => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Services\TarbiahService.php:113: 'created_at'  => now(),
+C:\Users\ASUS\Desktop\ALAMIN-MASTER\izz\app\Services\TrainingService.php:48: 'created_at'  => now(),

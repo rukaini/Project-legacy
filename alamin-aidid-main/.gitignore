@@ -1,0 +1,45 @@
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+/.codex
+/.agents/
+/.cursor/
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/auth.json
+/node_modules
+/public/build
+/public/fonts-manifest.dev.json
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+_ide_helper.php
+Homestead.json
+Homestead.yaml
+Thumbs.db
+
+# Local test and coverage outputs
+/coverage/
+/database/*.sqlite
+/database/*.sqlite-*
+/*.cookie
+/cookies*.txt
+# Local database backups
+/backups/
+/.backups/
+/*.sql
+/*.sql.gz
+/backend-integration/incoming/
+# Local trainer profile uploads
+/public/trainer_pics/

@@ -1,0 +1,2 @@
+@import "../../foundation/tokens.css";
+.ui-breadcrumb{display:flex;align-items:center;gap:8px;margin:0 0 15px;padding:0;list-style:none;flex-wrap:wrap;color:#94a3b8;font-size:11px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.ui-breadcrumb li{min-width:0;overflow-wrap:anywhere}.ui-breadcrumb a{color:#64748b;text-decoration:none}.ui-breadcrumb a:hover{color:#2563eb}.ui-breadcrumb [aria-current="page"]{color:#334155}.ui-breadcrumb a:focus-visible{outline:3px solid rgba(37,99,235,.22);outline-offset:2px}

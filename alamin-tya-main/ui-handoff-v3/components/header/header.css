@@ -1,0 +1,15 @@
+@import "../../foundation/tokens.css";
+.ui-header{position:sticky;top:0;z-index:1020;height:58px;border-bottom:1px solid #e2e8f0;background:rgba(255,255,255,0.96);box-shadow:0 1px 10px rgba(15,23,42,0.04);backdrop-filter:blur(10px)}
+.ui-header__inner{width:min(100%,1880px);height:100%;margin-inline:auto;padding-inline:clamp(16px,2.25vw,42px);display:flex;align-items:center;min-width:0}
+.ui-header__brand{display:inline-flex;align-items:center;flex:0 0 auto;min-width:0;margin-right:24px;text-decoration:none}
+.ui-header__logo{display:block;width:auto;height:48px;max-width:52px;max-height:calc(58px - 8px);object-fit:contain;object-position:left center}
+.ui-header__nav{display:flex;align-items:center;height:100%;min-width:0}
+.ui-header__nav a{height:58px;padding:0 clamp(11px,.95vw,16px);border-bottom:2px solid transparent;color:#64748b;display:flex;align-items:center;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;transition:background-color .18s ease,color .18s ease,border-color .18s ease}
+.ui-header__nav a:hover{background:#f8fafc;color:#111827}.ui-header__nav a[aria-current="page"]{border-bottom-color:#2563eb;background:#eff6ff;color:#2563eb}
+.ui-header__actions{margin-left:auto;display:flex;align-items:center;gap:16px}.ui-header__account{min-width:0;max-width:clamp(96px,12vw,180px);text-align:right}.ui-header__name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:700}
+.ui-header__avatar{width:34px;height:34px;flex:0 0 auto;border:1px solid #bfdbfe;border-radius:10px;background:#eff6ff;color:#2563eb;display:grid;place-items:center;font-weight:700}.ui-header__logout{width:36px;height:36px;padding:0;border:0;border-radius:10px;background:transparent;color:#64748b}.ui-header__toggle{display:none;min-width:40px;min-height:38px;border:1px solid #cbd5e1;border-radius:9px;background:#fff;font-weight:700}
+.ui-header :is(a,button):focus-visible{outline:3px solid rgba(37,99,235,.3);outline-offset:2px}
+@media(max-width:1199.98px){.ui-header__nav a{padding-inline:9px;font-size:13px}.ui-header__brand{margin-right:16px}.ui-header__account{max-width:120px}}
+@media(max-width:991.98px){.ui-header{height:auto}.ui-header__inner{min-height:58px;padding-inline:16px}.ui-header__nav{display:none}.ui-header__toggle{display:inline-flex;align-items:center;justify-content:center}.ui-header__actions{gap:8px}}
+@media(max-width:575.98px){.ui-header__logo{height:44px}.ui-header__account{display:none}.ui-header__actions{gap:6px}}
+@media(prefers-reduced-motion:reduce){.ui-header *{transition-duration:.01ms!important;animation-duration:.01ms!important}}

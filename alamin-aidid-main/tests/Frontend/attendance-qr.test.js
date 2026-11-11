@@ -1,0 +1,72 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import test from 'node:test';
+import vm from 'node:vm';
+
+const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
+const panel = read('../../resources/views/trainer/attendance/partials/qr-panel.blade.php');
+const modal = read('../../resources/views/trainer/attendance/partials/qr-modal.blade.php');
+const styles = read('../../resources/views/trainer/attendance/partials/qr-styles.blade.php');
+const scripts = read('../../resources/views/trainer/attendance/partials/qr-scripts.blade.php');
+const lmsDetail = read('../../resources/views/trainer/training/attendance/partials/detail.blade.php');
+const lmsContent = read('../../resources/views/trainer/training/attendance/partials/content.blade.php');
+const simpleResults = read('../../resources/views/trainer/simple/attendance/partials/results.blade.php');
+const simpleContent = read('../../resources/views/trainer/simple/attendance/partials/content.blade.php');
+
+test('LMS and Simple Attendance expose one neutral QR control with active-only modal data', () => {
+    assert.match(lmsDetail, /trainer\.attendance\.partials\.qr-panel/);
+    assert.match(simpleResults, /trainer\.attendance\.partials\.qr-panel/);
+    assert.match(lmsContent, /trainer\.attendance\.partials\.qr-modal/);
+    assert.match(simpleContent, /trainer\.attendance\.partials\.qr-modal/);
+    assert.match(panel, /@if \(\$canViewQr\)/);
+    assert.match(panel, /@else\s+disabled\s+aria-disabled="true"/);
+    assert.match(panel, /title="\{\{ \$disabledReason \}\}"/);
+    assert.match(panel, /View QR Code/);
+    assert.match(panel, /data-qr-state/);
+    assert.match(panel, /data-qr-label/);
+    assert.match(panel, /data-qr-message/);
+    assert.match(panel, /data-qr-instruction/);
+    assert.match(panel, /data-qr-presentation-url/);
+    assert.doesNotMatch(panel, /attendance-qr-heading|attendance-qr-copy|attendance-qr-icon|attendance-qr-state|attendance-qr-expiry/);
+    assert.doesNotMatch(panel, />Attendance QR<\/div>/);
+    assert.doesNotMatch(panel, /Show Attendance QR|Preview Attendance QR|View Expired QR/);
+    assert.match(styles, /\.attendance-qr-button:disabled/);
+    assert.doesNotMatch(panel + modal, /qrID|attendanceLink|sessionID/);
+    assert.doesNotMatch(panel + modal, /<form|method="post"|method="patch"|method="delete"/i);
+});
+
+test('attendance QR modal is participant-readable, responsive, and handles image failure', () => {
+    assert.match(modal, /modal-dialog-centered/);
+    assert.match(modal, /Scan this QR code to record your attendance/);
+    assert.match(modal, /data-attendance-qr-state-label/);
+    assert.match(modal, /data-attendance-qr-state-message/);
+    assert.match(modal, /QR image could not be loaded/);
+    assert.doesNotMatch(modal, /Present Full Screen|Exit Full Screen/);
+    assert.doesNotMatch(modal, /Open QR in New Tab/);
+    assert.match(modal, /Open QR Display/);
+    assert.match(modal, /data-bs-dismiss="modal"/);
+    assert.match(modal, /aria-label="Close"/);
+    assert.match(modal, /target="_blank"/);
+    assert.match(modal, /rel="noopener noreferrer"/);
+    assert.doesNotMatch(modal, /\sdownload(?:=|\s|>)/i);
+    assert.match(styles, /width:\s*min\(380px,\s*100%\)/);
+    assert.doesNotMatch(styles, /:fullscreen|:-webkit-full-screen|is-presenting|attendance-qr-presenting/);
+    assert.match(styles, /@media \(max-width:\s*575\.98px\)/);
+    assert.match(styles, /overflow-wrap:\s*anywhere/);
+    assert.match(scripts, /image\.onerror/);
+    assert.match(scripts, /image\.onload/);
+    assert.match(scripts, /show\.bs\.modal/);
+    assert.match(scripts, /notice\.classList\.add\(state\)/);
+    assert.match(scripts, /state !== 'missing'/);
+    assert.match(scripts, /imageFrame\.hidden = !hasQr/);
+    assert.doesNotMatch(scripts, /requestFullscreen|exitFullscreen|fullscreenchange|webkitFullscreen|isPresenting|enterPresentation|exitPresentation/);
+    assert.doesNotMatch(scripts, /keydown|preventDefault|stopPropagation/);
+    assert.match(scripts, /const presentationUrl = opener\.dataset\.qrPresentationUrl/);
+    assert.match(scripts, /openImage\.href = presentationUrl/);
+    assert.doesNotMatch(scripts, /openImage\.href = imageUrl/);
+    assert.match(scripts, /openImage\.removeAttribute\('href'\)/);
+    assert.doesNotMatch(scripts, /Present Full Screen|Exit Full Screen|data-attendance-qr-present/);
+
+    const script = scripts.match(/<script>([\s\S]*?)<\/script>/)?.[1] || '';
+    assert.doesNotThrow(() => new vm.Script(script));
+});

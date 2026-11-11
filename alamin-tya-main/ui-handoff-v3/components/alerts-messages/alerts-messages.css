@@ -1,0 +1,2 @@
+@import "../../foundation/tokens.css";
+.ui-message{display:flex;align-items:center;gap:9px;margin-bottom:16px;padding:11px 13px;border:1px solid;border-radius:11px;font-size:12.5px;font-weight:750;overflow-wrap:anywhere}.ui-message--error{border-color:#fecaca;background:#fff1f2;color:#b91c1c}.ui-message--report-error{margin:12px 18px;padding:9px 11px;border-color:#fecdd3;border-radius:8px;background:#fff1f2;color:#be123c;font-size:12px;font-weight:700}.ui-inline-error{margin-top:5px;color:#dc2626;font-size:11px;font-weight:800}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>app</directory>
+        </include>
+    </source>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_KEY" value="12345678901234567890123456789012"/>
+        <env name="APP_KEY" value="base64:dGVzdC1nYXRld2F5LWtleS0zMi1ieXRlcyEhISE="/>
+        <env name="APP_MAINTENANCE_DRIVER" value="file"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="BROADCAST_CONNECTION" value="null"/>
+        <env name="CACHE_STORE" value="array"/>
+        <env name="SSO_CACHE_STORE" value="array"/>
+        <env name="ALAMIN_LOGIN_REQUIRE_HTTPS" value="false"/>
+        <env name="SYSTEM_AIDID_ENABLED" value="true"/>
+        <env name="SYSTEM_NUREEN_ENABLED" value="true"/>
+        <env name="SYSTEM_SYIQIN_ENABLED" value="true"/>
+        <env name="SYSTEM_IZZ_ENABLED" value="true"/>
+        <env name="SYSTEM_TYA_ENABLED" value="true"/>
+        <env name="SYSTEM_AIDID_URL" value="http://aidid.test"/>
+        <env name="SYSTEM_NUREEN_URL" value="http://nureen.test"/>
+        <env name="SYSTEM_SYIQIN_URL" value="http://syiqin.test"/>
+        <env name="SYSTEM_IZZ_URL" value="http://izz.test"/>
+        <env name="SYSTEM_TYA_URL" value="http://tya.test"/>
+        <env name="ALAMIN_LOGIN_CLIENT_SECRET_AIDID" value="test-aidid-secret"/>
+        <env name="ALAMIN_LOGIN_CLIENT_SECRET_NUREEN" value="test-nureen-secret"/>
+        <env name="ALAMIN_LOGIN_CLIENT_SECRET_SYIQIN" value="test-syiqin-secret"/>
+        <env name="ALAMIN_LOGIN_CLIENT_SECRET_IZZ" value="test-izz-secret"/>
+        <env name="ALAMIN_LOGIN_CLIENT_SECRET_TYA" value="test-tya-secret"/>
+        <env name="SSO_CACHE_STORE" value="array"/>
+        <env name="SYSTEM_AIDID_ENABLED" value="true"/>
+        <env name="SYSTEM_NUREEN_ENABLED" value="true"/>
+        <env name="SYSTEM_SYIQIN_ENABLED" value="true"/>
+        <env name="SYSTEM_IZZ_ENABLED" value="true"/>
+        <env name="SYSTEM_TYA_ENABLED" value="true"/>
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+        <env name="DB_URL" value=""/>
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="PULSE_ENABLED" value="false"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="NIGHTWATCH_ENABLED" value="false"/>
+    </php>
+</phpunit>

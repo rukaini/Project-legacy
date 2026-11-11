@@ -1,0 +1,41 @@
+/.phpunit.cache
+/node_modules
+/vendor
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.idea
+/.vscode
+
+# Machine-specific/runtime files and personal uploads
+/.env.*
+!/.env.example
+/bootstrap/cache/*.php
+/storage/logs/
+/storage/framework/cache/data/
+/app/Legacy/uploads/
+/public/uploads/
+/app/Legacy/generated/
+/public/generated/
+
+# Database backups / snapshots (keep incremental schema patches)
+/main_database_V6.sql
+/database/reference/
+*.sql.gz
+*.sql.zip
+
+# Local-only utilities
+*.log
+.DS_Store
+Thumbs.db

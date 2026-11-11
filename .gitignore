@@ -1,0 +1,20 @@
+# Ignore composer and npm dependencies across all submodules
+**/vendor/
+**/node_modules/
+
+# Ignore sensitive environment files
+**/.env
+.env
+
+# Ignore build artifacts and cache
+**/public/hot
+**/public/storage
+**/storage/*.key
+**/storage/framework/cache/*
+**/storage/framework/sessions/*
+**/storage/framework/views/*
+**/storage/logs/*
+
+# OS generated files
+Thumbs.db
+.DS_Store

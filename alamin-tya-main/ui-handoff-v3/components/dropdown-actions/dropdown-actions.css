@@ -1,0 +1,2 @@
+@import "../../foundation/tokens.css";
+.ui-action-menu{position:relative;display:inline-block}.ui-action-menu__panel{position:absolute;top:100%;right:0;z-index:1000}.ui-action-menu__panel[hidden]{display:none}.ui-action-menu__item{display:flex;width:100%;align-items:center;font:inherit;text-align:left}.ui-action-menu__item:disabled{cursor:not-allowed}

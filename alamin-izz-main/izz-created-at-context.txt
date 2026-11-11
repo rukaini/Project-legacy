@@ -1,0 +1,106 @@
+
+===== app\Http\Controllers\GuruBaruApplicationController.php =====
+
+  app\Http\Controllers\GuruBaruApplicationController.php:52:    {
+  app\Http\Controllers\GuruBaruApplicationController.php:53:        $user      = $request->user();
+  app\Http\Controllers\GuruBaruApplicationController.php:54:        $guruNew = GuruNew::where('email', $user->email)->first();
+  app\Http\Controllers\GuruBaruApplicationController.php:55:
+  app\Http\Controllers\GuruBaruApplicationController.php:56:        $courses = Training::where('courseCategory', 'series')
+> app\Http\Controllers\GuruBaruApplicationController.php:57:            ->latest()
+  app\Http\Controllers\GuruBaruApplicationController.php:58:            ->get();
+  app\Http\Controllers\GuruBaruApplicationController.php:59:
+  app\Http\Controllers\GuruBaruApplicationController.php:60:        // Ensure every series course has an auto_enrolled record for this 
+guru_baru
+  app\Http\Controllers\GuruBaruApplicationController.php:61:        if ($guruNew) {
+  app\Http\Controllers\GuruBaruApplicationController.php:62:            foreach ($courses as $course) {
+
+
+
+
+===== app\Http\Controllers\TrainingController.php =====
+
+  app\Http\Controllers\TrainingController.php:58:
+  app\Http\Controllers\TrainingController.php:59:        if ($request->filled('status')) {
+  app\Http\Controllers\TrainingController.php:60:            $query->where('status', $request->status);
+  app\Http\Controllers\TrainingController.php:61:        }
+  app\Http\Controllers\TrainingController.php:62:
+> app\Http\Controllers\TrainingController.php:63:        $trainings = $query->latest()->get();
+  app\Http\Controllers\TrainingController.php:64:
+  app\Http\Controllers\TrainingController.php:65:        $userApplicationMap  = [];
+  app\Http\Controllers\TrainingController.php:66:        $totalLadapHours     = 0.0;
+  app\Http\Controllers\TrainingController.php:67:        $estimatedLadapHours = 0.0;
+  app\Http\Controllers\TrainingController.php:68:
+  app\Http\Controllers\TrainingController.php:385:                ->get()
+  app\Http\Controllers\TrainingController.php:386:                ->keyBy('assessment_id');
+  app\Http\Controllers\TrainingController.php:387:
+  app\Http\Controllers\TrainingController.php:388:            $assessments = Assessment::where('courseID', $training->getKey())
+  app\Http\Controllers\TrainingController.php:389:                ->orderBy('type')
+> app\Http\Controllers\TrainingController.php:390:                ->orderBy('created_at')
+  app\Http\Controllers\TrainingController.php:391:                ->get()
+  app\Http\Controllers\TrainingController.php:392:                ->map(fn (Assessment $a) => [
+  app\Http\Controllers\TrainingController.php:393:                    'assessment_id'  => $a->assessment_id,
+  app\Http\Controllers\TrainingController.php:394:                    'module_id'      => $a->module_id,
+  app\Http\Controllers\TrainingController.php:395:                    'type'           => $a->type,
+
+
+
+
+===== app\Http\Controllers\TrainingHistoryController.php =====
+
+  app\Http\Controllers\TrainingHistoryController.php:808:                ->keyBy('assessment_id')
+  app\Http\Controllers\TrainingHistoryController.php:809:            : collect();
+  app\Http\Controllers\TrainingHistoryController.php:810:
+  app\Http\Controllers\TrainingHistoryController.php:811:        $assessments = Assessment::where('courseID', $courseKey)
+  app\Http\Controllers\TrainingHistoryController.php:812:            ->orderBy('type')
+> app\Http\Controllers\TrainingHistoryController.php:813:            ->orderBy('created_at')
+  app\Http\Controllers\TrainingHistoryController.php:814:            ->get()
+  app\Http\Controllers\TrainingHistoryController.php:815:            ->map(fn (Assessment $a) => [
+  app\Http\Controllers\TrainingHistoryController.php:816:                'assessment_id' => $a->assessment_id,
+  app\Http\Controllers\TrainingHistoryController.php:817:                'type'          => $a->type,
+  app\Http\Controllers\TrainingHistoryController.php:818:                'title'         => $a->title,
+
+
+
+
+===== app\Http\Controllers\Dashboard\GuruBesarDashboardController.php =====
+
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:35:            ->pluck('id');
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:36:
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:37:        $recentApplications = Application::with(['teacher', 
+'training'])
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:38:            ->where('status', 'pending')
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:39:            ->whereIn('teacherID', 
+$schoolTeachers->pluck('teacherID'))
+> app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:40:            ->latest('applied_at')
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:41:            ->take(5)
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:42:            ->get()
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:43:            ->map(fn ($app) => [
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:44:                'id'         => $app->getRouteKey(),
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:45:                'applicant'  => $app->teacher?->teacherName ?? '—',
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:46:                'training'   => $app->training->courseName ?? '—',
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:47:                'applied_at' => $app->applied_at,
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:48:            ]);
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:49:
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:50:        $upcomingTrainings = Training::where('status', 'upcoming')
+> app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:51:            ->latest()
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:52:            ->take(3)
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:53:            ->get()
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:54:            ->map(fn ($t) => [
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:55:                'id'       => $t->getKey(),
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:56:                'title'    => $t->courseName,
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:105:                        ->count();
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:106:                    $ladapHours = $teacherRecord
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:107:                        ? (float) Attendance::where('teacher_id', 
+$teacherRecord->teacherID)->whereIn('session_id', $sessionIds)->sum('hours_ladap')
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:108:                        : 0.0;
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:109:                    $latestAttendance = $teacherRecord
+> app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:110:                        ? Attendance::where('teacher_id', 
+$teacherRecord->teacherID)->whereIn('session_id', $sessionIds)->max('created_at')
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:111:                        : null;
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:112:
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:113:                    return [
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:114:                        'id'                   => $teacher->id,
+  app\Http\Controllers\Dashboard\GuruBesarDashboardController.php:115:                        'name'                 => $teacher->name,
+
+
+
